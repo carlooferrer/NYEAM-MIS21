@@ -1,0 +1,32 @@
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th> Name </th>
+            <th> Email </th>
+            <th> Admin </th>
+            <th> Status </th>
+            <th colspan="3" class="text-center"> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @cashiers.each do |cashier| %>
+            <tr>
+                <td> <%= cashier.name %> </td>
+                <td> <%= cashier.email %> </td>
+                <td> <%= cashier.admin %> </td>
+                <td> <%= 'Active' %> </td>
+                <% if current_admin == cashier.admin %>
+                    <td class="text-center"> <%= link_to 'Show', cashier, class:"btn btn-primary" %> </td>
+                    <td class="text-center"> <%= link_to 'Update', edit_cashier_path(cashier), class:"btn btn-success" %> </td>
+                    <td class="text-center"> <%= link_to 'Deactivate', deactivate_cashier_path(cashier), class:"btn btn-danger", data: { confirm: 'Are you sure you want to deactivate this cashier?' }  %> </td>
+                <% else %>
+                    <td class="text-center" colspan="3"> <%= link_to 'Show', cashier, class:"btn btn-primary" %> </td>
+                <% end %>
+            </tr>
+        <% end %>
+        
+    </tbody> 
+</table>
+
+<%= link_to raw("<i class='glyphicon glyphicon-plus'></i> Add New Cashier"), new_cashier_path, class:"btn btn-primary" %>

@@ -1,0 +1,52 @@
+<style>
+  
+  h2{
+    margin-bottom: 20px;
+    font-weight: bold;
+    
+  }
+  
+  form-actions{
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  
+    .form-inputs input[type="text"],
+    .form-inputs input[type="email"],
+    .form-inputs input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+}
+
+
+
+.form-actions input[type="button"]{
+  
+}
+  }
+</style>
+
+
+
+
+<h2>Get Started</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+<div class = "col-md-6">
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Sign up", class: 'btn btn-warning' %>
+  </div>
+  
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>

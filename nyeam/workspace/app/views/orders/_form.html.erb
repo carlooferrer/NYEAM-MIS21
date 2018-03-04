@@ -1,0 +1,17 @@
+<div>
+    <%= simple_form_for(@order, html: { class: 'form-horizontal' }) do |f| %>
+      <%= f.simple_fields_for :order_lines do |orderline| %>
+        <% render 'order_line_fields', f: orderline %>
+      <% end %>
+      <br>
+      <div class="links">
+        <%= link_to_add_association 'Add new product to cart', f, :order_lines, class: 'btn btn-primary' %>
+      </div>
+
+      <div class="pull-right">    
+        <%= f.button :submit%>
+        <%= link_to 'Back', orders_path, class:"btn btn-danger" %>
+      </div>
+    <% end %>
+
+</div>

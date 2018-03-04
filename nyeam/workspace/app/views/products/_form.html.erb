@@ -1,0 +1,12 @@
+<div></div>
+<div class="form-inputs">
+  <%= simple_form_for(@product, html: { class: 'form-horizontal' }) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :price, as: :decimal %>
+
+    <div class="pull-right">    
+      <%= f.button :submit %>
+      <%= link_to 'Back', products_path, class:"btn btn-danger" %>
+    </div>
+  <% end %>
+</div>

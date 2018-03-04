@@ -1,0 +1,37 @@
+<style>
+  h2{
+  background-color: none;
+	outline: none;
+	color: black;
+	font-size: 30px;
+	height: auto;
+	font-family: sans-serif;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+  }
+
+}
+    
+  }
+</style>
+
+
+
+
+<h2>Log in</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email, required: false, autofocus: true %>
+    <%= f.input :password, required: false %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

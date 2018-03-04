@@ -1,0 +1,21 @@
+<h1> Daily Report </h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th> Car </th>
+            <th> Total Quantity Sold </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <% @products.each do |product| %>
+            <tr>
+                <% numbersold = 0 %>
+                <% if product.status == true %>
+                <td> <%= product.name %> </td>
+                <td> <%= numbersold += product.order_lines.quantity  %> </td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody> 
+</table>

@@ -1,0 +1,24 @@
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th> Cashier </th>
+            <th> Total Price </th>
+            <th> Cash Paid </th>
+            <th colspan="3" class="text-center"> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @orders.each do |order| %>
+            <tr>
+                <td> <%= order.cashier.name %> </td>
+                <td> <%= order.total_price %> </td>
+                <td> <%= order.cash %> </td>
+                <td class="text-center"> <%= link_to 'Show', order, class:"btn btn-primary" %> </td>
+            </tr>
+        <% end %>
+        
+    </tbody> 
+</table>
+
+<%= link_to raw("<i class='glyphicon glyphicon-plus'></i> Add New Order"), new_order_path, class:"btn btn-primary" %>

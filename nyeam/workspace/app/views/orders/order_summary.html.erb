@@ -1,0 +1,46 @@
+<div>
+    <h2>Confirm Order</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> Price per unit </th>
+                <th> Quantity </th>
+                <th> Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% sum = 0 %>
+            <% @order.order_lines.each do |o| %>
+                <tr>
+                    <td> <%= o.product.name %> </td>
+                    <td> <%= o.product.price %> </td>
+                    <td> <%= o.quantity %> </td>
+                    <td> <%= o.product.price * o.quantity%></td>
+                    <% sum += (o.product.price * o.quantity)%>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    
+    <div class="form-inputs">
+        
+      <%= simple_form_for(@order, :url => url_for(:action => 'tempcreate', :controller => 'orders'), :method => 'post', html: { class: 'form-horizontal' }) do |f| %>
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> Total Price: <%= sum %> </th> 
+                <% @order.total_price = sum%>
+            </tr>
+        </thead>
+    </table>
+        <% f.input :cashier_id  %>
+        <%= f.input :total_price, as: :decimal, :value => @order.total_price %>
+        <%= f.input :cash  %>
+        <div class="pull-right">    
+          <%= f.button :submit, class:"btn btn-primary"%>
+          <%= link_to 'Back', orders_path, class:"btn btn-danger" %>
+        </div>
+        <% end %>
+    </div>
+</div>
